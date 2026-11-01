@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17134b">
+<title>International Educational Egypt | Demo Gallery</title>
+<style>
+:root{
+  --navy:#17134b;--ink:#202044;--muted:#6f7190;--pink:#ff4fa0;--purple:#7957ff;
+  --blue:#3c8dff;--cyan:#39c9df;--yellow:#ffd45e;--green:#35c99a;
+  --paper:#f7f7ff;--white:#fff;--shadow:0 18px 50px rgba(43,36,108,.13);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,ui-rounded,"Segoe UI",Arial,sans-serif;color:var(--ink);
+ background:radial-gradient(circle at 8% 5%,#ffe4f1 0,transparent 25%),radial-gradient(circle at 94% 12%,#dff7ff 0,transparent 25%),var(--paper);min-height:100vh}
+button,a{font:inherit}
+button{cursor:pointer}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px clamp(18px,5vw,72px);max-width:1500px;margin:auto}
+.brand-mini{display:flex;align-items:center;gap:10px;font-weight:900;color:var(--navy);letter-spacing:-.4px}
+.brand-symbol{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--purple),var(--pink));display:grid;place-items:center;color:white;font-size:22px;box-shadow:0 8px 20px #7957ff55}
+.nav-actions{display:flex;gap:10px;align-items:center}
+.ghost-btn{border:1px solid #deddf4;background:#ffffffb8;color:var(--navy);border-radius:999px;padding:10px 17px;font-weight:750;transition:.2s}
+.ghost-btn:hover{transform:translateY(-2px);background:white;box-shadow:var(--shadow)}
+main{max-width:1280px;margin:auto;padding:18px clamp(18px,5vw,64px) 70px}
+.view{display:none;animation:rise .45s ease both}.view.active{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.hero{text-align:center;padding:clamp(35px,7vw,80px) 12px 38px;position:relative;overflow:hidden}
+.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;z-index:-1;filter:blur(1px);animation:float 7s ease-in-out infinite}
+.hero:before{width:100px;height:100px;background:#ffe17e88;left:8%;top:12%}
+.hero:after{width:70px;height:70px;background:#a8eaff99;right:10%;bottom:12%;animation-delay:-3s}
+@keyframes float{50%{transform:translateY(-18px) rotate(12deg)}}
+.logo-wrap{width:min(260px,62vw);aspect-ratio:1.35;margin:0 auto 24px;border-radius:34px;background:white;box-shadow:0 20px 55px #4135a51c;display:flex;align-items:center;justify-content:center;padding:22px;position:relative}
+.logo-wrap img{max-width:100%;max-height:100%;object-fit:contain}
+.logo-fallback{font-weight:1000;line-height:1.05;color:var(--navy);font-size:clamp(20px,4vw,31px);text-align:center}
+.logo-fallback span{display:block;font-size:12px;letter-spacing:2px;color:var(--pink);margin-top:9px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #e9e7ff;border-radius:999px;padding:8px 14px;color:#6b56d9;font-size:12px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase}
+h1{font-size:clamp(34px,6vw,64px);line-height:1.04;letter-spacing:-2.4px;color:var(--navy);margin:20px auto 14px;max-width:850px}
+.gradient-text{background:linear-gradient(90deg,var(--purple),var(--pink),#ff9d43);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:clamp(15px,2vw,19px);line-height:1.65;color:var(--muted);max-width:650px;margin:0 auto}
+.home-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;max-width:850px;margin:42px auto 0}
+.big-action{border:0;border-radius:25px;min-height:155px;padding:25px;text-align:left;color:white;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 18px 35px #3c2b8b25;transition:transform .25s,box-shadow .25s;position:relative;overflow:hidden}
+.big-action:hover{transform:translateY(-7px) scale(1.015);box-shadow:0 25px 45px #3c2b8b35}
+.big-action:after{content:"";position:absolute;width:170px;height:170px;border:1px solid #ffffff55;border-radius:50%;right:-35px;top:-70px;box-shadow:0 0 0 18px #ffffff12,0 0 0 38px #ffffff0d}
+.action-apps{background:linear-gradient(135deg,#654bfa,#3d91ff)}
+.action-ads{background:linear-gradient(135deg,#ff4d9a,#ff8a55)}
+.action-icon{font-size:35px}.action-title{font-size:clamp(19px,2.5vw,25px);font-weight:950}.action-sub{font-size:13px;opacity:.85;margin-top:5px}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin:24px 0 28px}
+.section-head h2{font-size:clamp(29px,4vw,43px);letter-spacing:-1.4px;color:var(--navy);margin:10px 0 5px}
+.section-head p{color:var(--muted);margin:0;line-height:1.5}
+.back-btn{border:0;background:#fff;border-radius:999px;padding:11px 17px;color:var(--navy);font-weight:850;box-shadow:0 5px 18px #28205c10;white-space:nowrap}
+.back-btn:hover{transform:translateX(-3px)}
+.card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.choice-card{border:1px solid #eeedfa;border-radius:24px;padding:25px;background:#fff;min-height:190px;text-align:left;box-shadow:0 10px 28px #2e27600a;transition:.25s;position:relative;overflow:hidden;color:var(--ink)}
+.choice-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:#d9d3ff}
+.choice-card .emoji{font-size:36px;display:block;margin-bottom:22px}
+.choice-card strong{font-size:21px;display:block;color:var(--navy)}
+.choice-card small{display:block;color:var(--muted);margin-top:7px;font-size:13px}
+.choice-card:after{content:"↗";position:absolute;right:20px;bottom:18px;color:#a7a2ca;font-size:21px}
+.c-grade{background:linear-gradient(145deg,#fff,#f1f0ff)}.c-kids{background:linear-gradient(145deg,#fff,#fff0f7)}
+.subject-card{min-height:160px}
+.subject-card .emoji{margin-bottom:13px}
+.video-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.video-card{background:white;border:1px solid #eeedfa;border-radius:22px;overflow:hidden;box-shadow:0 10px 28px #2e27600a}
+.video-thumb{aspect-ratio:16/9;background:linear-gradient(135deg,#e7e2ff,#dff5ff);display:grid;place-items:center;position:relative}
+.video-thumb .play{width:58px;height:58px;border-radius:50%;background:#fff;color:var(--purple);display:grid;place-items:center;font-size:23px;box-shadow:0 8px 22px #30277b22}
+.video-info{padding:17px}.video-info strong{display:block;color:var(--navy);font-size:17px}.video-info p{font-size:13px;color:var(--muted);line-height:1.5;margin:8px 0 13px}
+.watch{display:inline-block;text-decoration:none;background:var(--navy);color:white;padding:9px 14px;border-radius:999px;font-size:12px;font-weight:850}
+.watch.disabled{opacity:.45;pointer-events:none}
+.empty-note{background:#fff;border:1px dashed #d9d5f3;border-radius:20px;padding:28px;text-align:center;color:var(--muted);grid-column:1/-1}
+.ads-intro{background:linear-gradient(120deg,#fff0f7,#f0edff);padding:28px;border-radius:25px;margin-bottom:24px}
+.ads-intro h3{margin:0 0 8px;color:var(--navy);font-size:24px}.ads-intro p{margin:0;color:var(--muted);line-height:1.6}
+footer{text-align:center;padding:24px;color:#8988a6;font-size:12px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);background:var(--navy);color:white;padding:12px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:.25s;z-index:20;font-size:13px}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:800px){.card-grid,.video-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.topbar{padding-top:14px}.section-head{align-items:flex-start;flex-direction:column}}
+@media(max-width:560px){.home-actions{grid-template-columns:1fr;gap:13px}.big-action{min-height:130px}.card-grid,.video-grid{grid-template-columns:1fr}.choice-card{min-height:145px}.choice-card .emoji{margin-bottom:12px}.nav-actions .ghost-btn{padding:9px 12px;font-size:12px}.brand-mini{font-size:13px}.brand-symbol{width:36px;height:36px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand-mini"><div class="brand-symbol">✦</div><span>International Educational Egypt</span></div>
+  <div class="nav-actions"><button class="ghost-btn" onclick="goHome()">Home</button><button class="ghost-btn" onclick="showView('ads')">Our Ads</button></div>
+</header>
+<main>
+  <section id="home" class="view active">
+    <div class="hero">
+      <div class="logo-wrap" id="logoWrap">
+        <!-- Replace logo.png with your official channel logo file. -->
+        <div class="logo-fallback">International<br>Educational Egypt<span>LEARN • CREATE • INSPIRE</span></div>
+      </div>
+      <div class="eyebrow">✦ Welcome to our showcase</div>
+      <h1>Ideas that make learning <span class="gradient-text">come alive.</span></h1>
+      <p class="lead">Explore our educational applications, watch product demos, and discover the creative ads we make.</p>
+      <div class="home-actions">
+        <button class="big-action action-apps" onclick="showView('grades')">
+          <span class="action-icon">🎓</span><span><span class="action-title">Educational Apps Videos</span><span class="action-sub">Explore demos by grade and subject</span></span>
+        </button>
+        <button class="big-action action-ads" onclick="showView('ads')">
+          <span class="action-icon">🎬</span><span><span class="action-title">Our Ads</span><span class="action-sub">See our creative advertising videos</span></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section id="grades" class="view">
+    <div class="section-head"><div><div class="eyebrow">Educational app demos</div><h2>Choose your learning level</h2><p>Pick a grade to explore its app demonstrations.</p></div><button class="back-btn" onclick="goHome()">← Home</button></div>
+    <div class="card-grid">
+      <button class="choice-card c-grade" onclick="openGrade('grade8')"><span class="emoji">🚀</span><strong>Grade 8</strong><small>Explore Grade 8 applications</small></button>
+      <button class="choice-card c-grade" onclick="openGrade('grade6')"><span class="emoji">🌟</span><strong>Grade 6</strong><small>Explore Grade 6 applications</small></button>
+      <button class="choice-card c-kids" onclick="openKids()"><span class="emoji">🧸</span><strong>Kids</strong><small>Fun learning experiences for kids</small></button>
+    </div>
+  </section>
+
+  <section id="subjects" class="view">
+    <div class="section-head"><div><div class="eyebrow" id="gradeEyebrow">Grade 8</div><h2 id="gradeTitle">Choose a subject</h2><p>Select a subject to watch its application demos.</p></div><button class="back-btn" onclick="showView('grades')">← Grades</button></div>
+    <div class="card-grid" id="subjectGrid"></div>
+  </section>
+
+  <section id="videos" class="view">
+    <div class="section-head"><div><div class="eyebrow" id="videoEyebrow">Grade 8 • Science</div><h2 id="videoTitle">Application videos</h2><p>Watch the demos and explore the app experience.</p></div><button class="back-btn" onclick="backToSubjects()">← Subjects</button></div>
+    <div class="video-grid" id="videoGrid"></div>
+  </section>
+
+  <section id="kids" class="view">
+    <div class="section-head"><div><div class="eyebrow">Kids collection</div><h2>Learning made playful</h2><p>Discover our apps and videos designed for young learners.</p></div><button class="back-btn" onclick="showView('grades')">← Grades</button></div>
+    <div class="video-grid" id="kidsGrid"></div>
+  </section>
+
+  <section id="ads" class="view">
+    <div class="section-head"><div><div class="eyebrow">Creative portfolio</div><h2>Our Ads</h2><p>A collection of advertising videos and creative campaigns.</p></div><button class="back-btn" onclick="goHome()">← Home</button></div>
+    <div class="ads-intro"><h3>Stories that connect with audiences ✨</h3><p>Explore our advertising work. Each video can open on YouTube, Google Drive, or your preferred video platform.</p></div>
+    <div class="video-grid" id="adsGrid"></div>
+  </section>
+</main>
+<footer>© <span id="year"></span> International Educational Egypt · Explore. Learn. Create.</footer>
+<div class="toast" id="toast">Video link will be added soon.</div>
+<script>
+/*
+  ADD YOUR VIDEO LINKS HERE.
+  For each video, replace url with a YouTube / Google Drive / Vimeo link.
+  You can add more objects to any videos array.
+*/
+const content = {
+  grade8: {
+    Science: [{title:"Grade 8 Science App Demo", description:"A preview of the Grade 8 Science learning application.", url:"https://youtu.be/O2yNPHb1-eI?si=5tNjJZmtWLfU2_eN"}],
+    Math: [{title:"Grade 8 Math App Demo", description:"A preview of the Grade 8 Math learning application.", url:"https://youtu.be/xX4NGvdm_TI?si=FQVR0aZgNwKir6jl"}],
+    German: [{title:"Grade 8 German App Demo", description:"A preview of the Grade 8 German learning application.", url:""}],
+    "لغة عربية": [{title:"Grade 8 Arabic App Demo", description:"عرض تجريبي لتطبيق اللغة العربية للصف الثامن.", url:"https://youtu.be/kvJYI8cK8QM?si=594P6xwmdfj9hOp0"}],
+    "دراسات اجتماعية": [{title:"Grade 8 Social Studies App Demo", description:"عرض تجريبي لتطبيق الدراسات الاجتماعية للصف الثامن.", url:"https://youtu.be/ZYvCkvvRLgc?si=EKuR53Okp92eCTNS"}]
+  },
+  grade6: {
+    Science: [{title:"Grade 6 Science App Demo", description:"A preview of the Grade 6 Science learning application.", url:"https://youtu.be/vYZcpDHHGPQ?si=Zlmuy_HAAZRI0ABy"}],
+    Math: [{title:"Grade 6 Math App Demo", description:"A preview of the Grade 6 Math learning application.", url:"https://youtu.be/ykXs_INvgls?si=ouR6D-tdvS1B1mGj"}],
+    German: [{title:"Grade 6 German App Demo", description:"A preview of the Grade 6 German learning application.", url:""}],
+    "لغة عربية": [{title:"Grade 6 Arabic App Demo", description:"عرض تجريبي لتطبيق اللغة العربية للصف السادس.", url:""}],
+    "دراسات اجتماعية": [{title:"Grade 6 Social Studies App Demo", description:"عرض تجريبي لتطبيق الدراسات الاجتماعية للصف السادس.", url:"https://youtu.be/Cu2fVLRio4g?si=ZRSYYNGA4r81bUW3"}]
+  },
+  kids: [
+    {title:"Math Mission: Multiplication Heroes", description:"An animated multiplication adventure for kids. Choose a times-table island, solve missions, and collect stars.", url:"kids/math_mission_heroes_3d_style_animated.html"}
+  ],
+  ads: [
+    {title:"Advertising Campaign 1", description:"Our creative advertising work.", url:""},
+    {title:"Advertising Campaign 2", description:"A showcase of our video production.", url:""}
+  ]
+};
+const subjectMeta = [
+  ["Science","🔬"],["Math","➗"],["German","🇩🇪"],["لغة عربية","📚"],["دراسات اجتماعية","🌍"]
+];
+let currentGrade = "grade8";
+let currentSubject = "Science";
+function showView(id){
+  document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function goHome(){showView("home")}
+function openGrade(grade){
+  currentGrade=grade;
+  const label=grade==="grade8"?"Grade 8":"Grade 6";
+  document.getElementById("gradeEyebrow").textContent=label+" applications";
+  document.getElementById("gradeTitle").textContent=label+" · Choose a subject";
+  document.getElementById("subjectGrid").innerHTML=subjectMeta.map(([name,emoji])=>
+    `<button class="choice-card subject-card" onclick="openSubject('${name.replace(/'/g,"\\'")}')"><span class="emoji">${emoji}</span><strong>${name}</strong><small>View ${name} demos</small></button>`
+  ).join("");
+  showView("subjects");
+}
+function openSubject(subject){
+  currentSubject=subject;
+  const gradeLabel=currentGrade==="grade8"?"Grade 8":"Grade 6";
+  document.getElementById("videoEyebrow").textContent=gradeLabel+" • "+subject;
+  document.getElementById("videoTitle").textContent=subject+" application videos";
+  renderVideos("videoGrid",content[currentGrade][subject]||[]);
+  showView("videos");
+}
+function backToSubjects(){openGrade(currentGrade)}
+function openKids(){renderVideos("kidsGrid",content.kids);showView("kids")}
+function renderVideos(targetId,items){
+  const target=document.getElementById(targetId);
+  if(!items.length){target.innerHTML='<div class="empty-note">Videos will appear here once links are added.</div>';return}
+  target.innerHTML=items.map((item,index)=>{
+    const url=item.url||"";
+    const safeUrl=url.replace(/&/g,"&amp;").replace(/"/g,"&quot;");
+    return `<article class="video-card"><div class="video-thumb"><span class="play">▶</span></div><div class="video-info"><strong>${item.title}</strong><p>${item.description||""}</p>${url?`<a class="watch" href="${safeUrl}" target="_blank" rel="noopener">${safeUrl.toLowerCase().endsWith(".html")?"↗ Open demo":"▶ Watch video"}</a>`:`<a class="watch disabled" href="#" onclick="showToast();return false">Coming soon</a>`}</div></article>`;
+  }).join("");
+}
+function showToast(){const t=document.getElementById("toast");t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2200)}
+document.getElementById("adsGrid").innerHTML="";
+renderVideos("adsGrid",content.ads);
+document.getElementById("year").textContent=new Date().getFullYear();
+// Optional official logo: place your image beside this HTML file and name it logo.png.
+const logo=document.createElement("img");logo.src="logo.png";logo.alt="International Educational Egypt logo";
+logo.onload=()=>{const w=document.getElementById("logoWrap");w.innerHTML="";w.appendChild(logo)};
+</script>
+</body>
+</html>
