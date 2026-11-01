@@ -45,11 +45,14 @@ window.SITE = {
 
   // ---- OUR ADS: add { title, category, description, url } ----
   ads: [
+    { title: "Advertisement 1", category: "Campaigns", description: "Promotional video from International Education Egypt.", url: "https://youtube.com/shorts/lKD-cMRDK7M" },
+    { title: "Advertisement 2", category: "Campaigns", description: "Promotional video from International Education Egypt.", url: "https://youtube.com/shorts/IsiemKSsmT8" },
+    { title: "Advertisement 3", category: "Campaigns", description: "Promotional video from International Education Egypt.", url: "https://youtube.com/shorts/cT7GeqKZKp4" },
     // { title: "Back to School Campaign", category: "Campaigns", description: "Short description.", url: "https://youtu.be/XXXXXXXXXXX" }
   ],
   adCategories: ["All", "Campaigns", "Apps", "Games"],
   adPlaceholders: 3,
 
   // ---- CONTACT / SOCIAL: a link only appears when its value is filled in ----
-  contact: { email: "", phone: "", facebook: "", instagram: "", youtube: "", tiktok: "" }
+  contact: { whatsapp: "https://wa.me/201002152024", email: "", phone: "", facebook: "", instagram: "", youtube: "https://youtube.com/@internationaleducation_egypt", tiktok: "https://www.tiktok.com/@neso.colouring.withohuhu" }
 };

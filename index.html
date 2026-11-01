@@ -28,6 +28,7 @@
 <footer>
   <img src="assets/logo.png" alt="International Education Egypt logo" width="90" height="90">
   <p>© <span id="yr"></span> International Education Egypt</p>
+  <p class="fl" id="fsoc"></p>
   <p class="fl"><a href="#/">Home</a><a href="#/apps">Apps &amp; Demos</a><a href="#/kids">Kids Zone</a><a href="#/ads">Our Ads</a></p>
 </footer>
 
@@ -50,6 +51,11 @@
   </svg>
   <button class="toggle" id="toggle" aria-label="Hide guide">✕</button>
 </aside>
+<div id="intro" role="dialog" aria-label="Welcome video">
+  <video id="iv" src="assets/intro.mp4" poster="assets/intro-poster.jpg" playsinline muted autoplay preload="auto"></video>
+  <div class="ic"><button id="isound" type="button">🔇 Sound on</button><button id="iskip" type="button">Skip ▶</button></div>
+  <button id="iplay" type="button" hidden>▶ Tap to play</button>
+</div>
 <script src="js/data.js"></script>
 <script src="js/app.js"></script>
 </body>

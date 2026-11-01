@@ -39,7 +39,8 @@ P.home=()=>({title:'International Education Egypt – Interactive Learning',desc
  <section class="sec rv"><h2>Explore Our Educational Games</h2><div class="grid"><a class="card yellow" href="#/kids"><span class="em">🏝️</span><h3>${esc(D.game.title)}</h3><p>Open the Kids Zone and play.</p></a></div></section>
  <section class="sec rv"><h2>Why Choose International Education Egypt?</h2><div class="tiles"><div class="tile"><b>🎯</b><h3>By grade &amp; subject</h3><p>Find content quickly.</p></div><div class="tile"><b>👀</b><h3>Real demos</h3><p>See the apps in action.</p></div><div class="tile"><b>🕹️</b><h3>Play to learn</h3><p>Interactive games for kids.</p></div><div class="tile"><b>🌐</b><h3>Arabic &amp; English</h3><p>Including Arabic and German subjects.</p></div></div></section>
  ${contact()}`});
-function contact(){const c=D.contact,L=[['email','✉️','Email',c.email&&'mailto:'+c.email],['phone','📞','Phone',c.phone&&'tel:'+c.phone],['facebook','📘','Facebook',c.facebook],['instagram','📸','Instagram',c.instagram],['youtube','▶️','YouTube',c.youtube],['tiktok','🎵','TikTok',c.tiktok]].filter(x=>x[3]);
+function cList(){const c=D.contact;return [['whatsapp','💬','WhatsApp',c.whatsapp],['email','✉️','Email',c.email&&'mailto:'+c.email],['phone','📞','Phone',c.phone&&'tel:'+c.phone],['facebook','📘','Facebook',c.facebook],['instagram','📸','Instagram',c.instagram],['youtube','▶️','YouTube',c.youtube],['tiktok','🎵','TikTok',c.tiktok]].filter(x=>x[3])}
+function contact(){const L=cList();
  return `<section class="sec rv"><h2>Contact &amp; Social Media</h2>${L.length?`<div class="row" style="justify-content:center">${L.map(x=>`<a class="btn alt" href="${esc(x[3])}" target="_blank" rel="noopener">${x[1]} ${x[2]}</a>`).join('')}</div>`:'<p class="notice" style="text-align:center">Contact details will appear here soon.</p>'}</section>`}
 
 P.apps=()=>({title:'Educational Apps & Demos – International Education Egypt',desc:'Explore our educational apps by grade and subject.',nav:'apps',crumbs:[['Home','#/'],['Apps & Demos','#/apps']],
@@ -91,8 +92,18 @@ function route(){const p=location.hash.replace(/^#\/?/,'').split('/').filter(Boo
  window.scrollTo({top:0});main.focus({preventScroll:true});reveal()}
 window.addEventListener('hashchange',route);
 $('#burger').onclick=()=>{const o=$('#nav').classList.toggle('open');$('#burger').setAttribute('aria-expanded',o)};
+$('#fsoc').innerHTML=cList().map(x=>`<a href="${esc(x[3])}" target="_blank" rel="noopener">${x[1]} ${x[2]}</a>`).join('');
 $('#yr').textContent=new Date().getFullYear();
 /* floating background icons */
 if(!matchMedia('(prefers-reduced-motion:reduce)').matches)$('#bg').innerHTML=['📚','⭐','✏️','🔬','➗','🌍','💡','🎓','✨','📐'].map((e,i)=>`<i style="left:${(i*37+8)%95}%;font-size:${22+i%4*10}px;animation-duration:${22+i*4}s;animation-delay:-${i*5}s">${e}</i>`).join('');
+/* ---------- intro video ---------- */
+(function(){const intro=$('#intro'),iv=$('#iv');if(!intro)return;document.body.style.overflow='hidden';let done=false;
+ function end(){if(done)return;done=true;intro.classList.add('out');document.body.style.overflow='';iv.pause();setTimeout(()=>intro.remove(),750);main.focus({preventScroll:true})}
+ iv.addEventListener('ended',end);iv.addEventListener('error',end);$('#iskip').onclick=end;
+ $('#isound').onclick=()=>{iv.muted=!iv.muted;$('#isound').textContent=iv.muted?'🔇 Sound on':'🔊 Sound off'};
+ const p=iv.play();if(p&&p.catch)p.catch(()=>{$('#iplay').hidden=false});
+ $('#iplay').onclick=()=>{iv.muted=false;$('#isound').textContent='🔊 Sound off';iv.play();$('#iplay').hidden=true};
+ $('#iskip').focus();
+})();
 route();
 })();
